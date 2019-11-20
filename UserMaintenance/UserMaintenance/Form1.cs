@@ -23,6 +23,7 @@ namespace UserMaintenance
             label1.Text = Resource1.FullName;
             button1.Text = Resource1.Add;
             button2.Text = Resource1.WriteFile;
+            button3.Text = Resource1.Delete;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -68,6 +69,13 @@ namespace UserMaintenance
                     MessageBox.Show(string.Format("Hiba történt: {0}", ex.Message), "Hiba", MessageBoxButtons.OK);
                 }
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null) return;
+            var törlendő = (User)listBox1.SelectedItem;
+            users.Remove(törlendő);    
         }
     }
 }
